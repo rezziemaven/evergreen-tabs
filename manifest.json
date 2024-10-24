@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Evergreen Tabs",
   "description": "Opens a new window with tabs that should always be pinned",
-  "version": "1.0",
+  "version": "1.0.0",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -10,6 +10,6 @@
     "128": "images/icon-128.png"
   },
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "index.html"
   }
 }
