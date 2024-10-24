@@ -45,6 +45,11 @@ export function App() {
       <section id="header">
         <h1>Evergreen Tabs</h1>
       </section>
+      {linkExists && (
+        <div className="error">
+          Link already exists. Please enter a different link.
+        </div>
+      )}
       <form className="form" onSubmit={submitForm}>
         <label for="link-input">
           <h2>Add new pinned tab</h2>
