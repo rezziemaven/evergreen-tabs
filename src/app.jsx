@@ -37,7 +37,7 @@ export function App() {
   const removeLink = (id) => {
     setLinks((currentLinks) => currentLinks.filter((link) => link.id !== id));
   };
-  // Update local storage when link is added
+  // Update local storage when change is made to links state
   useEffect(() => {
     chrome.storage.sync.set({ evergreenTabLinks: [...links] }, (result) => {
       // console.log(result);
