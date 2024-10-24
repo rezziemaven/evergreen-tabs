@@ -1,6 +1,38 @@
+import { useState, useEffect } from 'preact/hooks';
+import { LinkListItem } from './components/LinkListItem';
 import './app.css';
 
 export function App() {
+  const [links, setLinks] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [linkExists, setLinkExists] = useState(false);
+  const inputHandler = (e) => {
+    setInputValue(e.currentTarget.value);
+    // console.log(e.currentTarget.value);
+  };
+
+  const submitForm = async (e) => {
+    if (e.currentTarget.checkValidity()) {
+      e.preventDefault();
+      // double check url isn't already in array
+      const urlMinusScheme = inputValue.split('//')[1];
+      const duplicate = links.filter((link) =>
+        link.url.includes(urlMinusScheme)
+      );
+      if (duplicate.length) setLinkExists(true);
+      else {
+        if (linkExists) setLinkExists(false);
+        setLinks((currentLinks) => [
+          ...currentLinks,
+          {
+            id: Date.now(),
+            url: inputValue,
+          },
+        ]);
+        // setInputValue('');
+      }
+    }
+  };
   return (
     <div>
       <section id="header">
