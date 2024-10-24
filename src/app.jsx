@@ -108,6 +108,9 @@ export function App() {
                 />
               ))}
             </ul>
+            <button className="clear-list" onClick={clearList}>
+              Clear list
+            </button>
           </>
         )}
       </section>
