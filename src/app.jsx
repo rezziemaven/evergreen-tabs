@@ -105,7 +105,7 @@ export function App() {
           <p>No tabs saved yet. Add one above!</p>
         ) : (
           <>
-            <ul className="list">
+            <div className="list">
               {links.map((link) => (
                 <LinkListItem
                   key={link.id}
@@ -114,7 +114,7 @@ export function App() {
                   onRemove={removeLink}
                 />
               ))}
-            </ul>
+            </div>
 
             <button className="clear-list" onClick={clearList}>
               Clear list
