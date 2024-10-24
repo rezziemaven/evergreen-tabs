@@ -96,6 +96,12 @@ button.add-item {
   color: var(--text);
   border: transparent;
 }
+
+button.move-item {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+
 form div {
   display: flex;
   justify-content: space-between;
