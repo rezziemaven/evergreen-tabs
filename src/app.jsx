@@ -34,6 +34,12 @@ export function App() {
       }
     }
   };
+
+  // TODO: move items in list
+  const updateLinksOrder = (currentPosition, newPosition) => {
+    console.log(currentPosition, newPosition);
+  };
+
   // Remove item from list
   const removeLink = (id) => {
     setLinks((currentLinks) => currentLinks.filter((link) => link.id !== id));
