@@ -100,7 +100,7 @@ export function App() {
           <p>No tabs saved yet. Add one above!</p>
         ) : (
           <>
-            <ul className="list">
+            <Draggable className="list">
               {links.map((link) => (
                 <LinkListItem
                   id={link.id}
@@ -108,7 +108,8 @@ export function App() {
                   onRemove={removeLink}
                 />
               ))}
-            </ul>
+            </Draggable>
+
             <button className="clear-list" onClick={clearList}>
               Clear list
             </button>
