@@ -105,3 +105,17 @@ input {
   padding: 0.5rem;
   border: 1px solid;
 }
+
+#footer {
+  margin-top: 2rem;
+}
+
+#footer p {
+  font-size: small;
+}
+
+#footer a {
+  color: var(--primary);
+  font-weight: bold;
+}
+
