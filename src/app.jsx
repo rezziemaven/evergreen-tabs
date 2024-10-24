@@ -37,6 +37,15 @@ export function App() {
   const removeLink = (id) => {
     setLinks((currentLinks) => currentLinks.filter((link) => link.id !== id));
   };
+  // Load list when popup opens
+  useEffect(() => {
+    chrome.storage.sync.get(['evergreenTabLinks'], (result) => {
+      if (result.evergreenTabLinks) {
+        setLinks([...result.evergreenTabLinks]);
+      }
+    });
+  }, []);
+
   // Update local storage when change is made to links state
   useEffect(() => {
     chrome.storage.sync.set({ evergreenTabLinks: [...links] }, (result) => {
