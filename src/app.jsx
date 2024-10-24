@@ -33,6 +33,13 @@ export function App() {
       }
     }
   };
+  // Update local storage when link is added
+  useEffect(() => {
+    chrome.storage.sync.set({ evergreenTabLinks: [...links] }, (result) => {
+      // console.log(result);
+    });
+  }, [links]);
+
   return (
     <div>
       <section id="header">
