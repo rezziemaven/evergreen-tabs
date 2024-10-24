@@ -119,3 +119,17 @@ input {
   font-weight: bold;
 }
 
+hr {
+  margin: 2rem 0 1rem 0;
+  border: none;
+  /* border-bottom: 1px dashed var(--text); */
+  height: 1px;
+  background: var(--text);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--text),
+    var(--text) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
