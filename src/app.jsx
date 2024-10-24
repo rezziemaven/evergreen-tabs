@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'preact/hooks';
-import { Draggable } from 'react-drag-reorder';
 import { LinkListItem } from './components/LinkListItem';
 import './app.css';
 
@@ -106,7 +105,7 @@ export function App() {
           <p>No tabs saved yet. Add one above!</p>
         ) : (
           <>
-            <Draggable className="list">
+            <ul className="list">
               {links.map((link) => (
                 <LinkListItem
                   id={link.id}
@@ -114,7 +113,7 @@ export function App() {
                   onRemove={removeLink}
                 />
               ))}
-            </Draggable>
+            </ul>
 
             <button className="clear-list" onClick={clearList}>
               Clear list
