@@ -90,6 +90,12 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
+button.add-item {
+  background-color: var(--primary);
+  color: var(--text);
+  border: transparent;
+}
 form div {
   display: flex;
   justify-content: space-between;
