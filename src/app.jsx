@@ -74,6 +74,21 @@ export function App() {
       <hr />
       <section className="evergreen-tabs">
         <h2>My evergreen tabs</h2>
+        {!links.length ? (
+          <p>No tabs saved yet. Add one above!</p>
+        ) : (
+          <>
+            <ul className="list">
+              {links.map((link) => (
+                <LinkListItem
+                  id={link.id}
+                  url={link.url}
+                  onRemove={removeLink}
+                />
+              ))}
+            </ul>
+          </>
+        )}
       </section>
       <section id="footer">
         <hr />
