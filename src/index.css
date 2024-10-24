@@ -18,6 +18,12 @@
   li {
     background-color: var(--primary);
   }
+
+  .error {
+    background-color: lightgoldenrodyellow;
+    color: darkgoldenrod;
+    border-color: lightgoldenrodyellow;
+  }
 body {
   width: 20rem;
   /* margin: 0; */
