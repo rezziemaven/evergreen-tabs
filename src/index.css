@@ -9,6 +9,8 @@
   --accent: #ffd23d;
   color: var(--text);
   background-color: var(--background);
+  color: var(--text);
+  background-color: var(--background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
