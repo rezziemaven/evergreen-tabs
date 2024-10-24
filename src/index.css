@@ -57,6 +57,8 @@ ul {
 
 li {
   display: flex;
+
+  color: var(--text);
   padding: 0.5rem;
   flex: 1;
   justify-content: space-between;
