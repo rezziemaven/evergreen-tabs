@@ -108,6 +108,7 @@ export function App() {
             <ul className="list">
               {links.map((link) => (
                 <LinkListItem
+                  key={link.id}
                   id={link.id}
                   url={link.url}
                   onRemove={removeLink}
