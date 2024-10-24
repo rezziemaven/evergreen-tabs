@@ -1,11 +1,55 @@
+import { useState, useEffect } from 'preact/hooks';
+import { LinkListItem } from './components/LinkListItem';
 import './app.css';
 
 export function App() {
+  const [links, setLinks] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [linkExists, setLinkExists] = useState(false);
+  const inputHandler = (e) => {
+    setInputValue(e.currentTarget.value);
+    // console.log(e.currentTarget.value);
+  };
+
+  const submitForm = async (e) => {
+    if (e.currentTarget.checkValidity()) {
+      e.preventDefault();
+      // double check url isn't already in array
+      const urlMinusScheme = inputValue.split('//')[1];
+      const duplicate = links.filter((link) =>
+        link.url.includes(urlMinusScheme)
+      );
+      if (duplicate.length) setLinkExists(true);
+      else {
+        if (linkExists) setLinkExists(false);
+        setLinks((currentLinks) => [
+          ...currentLinks,
+          {
+            id: Date.now(),
+            url: inputValue,
+          },
+        ]);
+        // setInputValue('');
+      }
+    }
+  };
+  // Update local storage when link is added
+  useEffect(() => {
+    chrome.storage.sync.set({ evergreenTabLinks: [...links] }, (result) => {
+      // console.log(result);
+    });
+  }, [links]);
+
   return (
     <div>
       <section id="header">
         <h1>Evergreen Tabs</h1>
       </section>
+      {linkExists && (
+        <div className="error">
+          Link already exists. Please enter a different link.
+        </div>
+      )}
       <form className="form" onSubmit={submitForm}>
         <label for="link-input">
           <h2>Add new pinned tab</h2>
@@ -30,6 +74,21 @@ export function App() {
       <hr />
       <section className="evergreen-tabs">
         <h2>My evergreen tabs</h2>
+        {!links.length ? (
+          <p>No tabs saved yet. Add one above!</p>
+        ) : (
+          <>
+            <ul className="list">
+              {links.map((link) => (
+                <LinkListItem
+                  id={link.id}
+                  url={link.url}
+                  onRemove={removeLink}
+                />
+              ))}
+            </ul>
+          </>
+        )}
       </section>
       <section id="footer">
         <hr />
