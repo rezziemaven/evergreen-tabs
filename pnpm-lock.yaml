@@ -11,6 +11,9 @@ importers:
       preact:
         specifier: ^10.24.3
         version: 10.24.3
+      react-drag-reorder:
+        specifier: ^1.2.0
+        version: 1.2.0
     devDependencies:
       '@preact/preset-vite':
         specifier: ^2.9.1
@@ -634,6 +637,9 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  react-drag-reorder@1.2.0:
+    resolution: {integrity: sha512-UXpXvRYorBoJOIaniqDXtU/eKWx1YNk6D2efUk+awXAd2xNJS6DSdwEOrwUZU44XsjKYO54/QC1RmiaL2OqiEg==}
 
   readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
@@ -1299,6 +1305,8 @@ snapshots:
   preact@10.24.3: {}
 
   queue-microtask@1.2.3: {}
+
+  react-drag-reorder@1.2.0: {}
 
   readdirp@3.6.0:
     dependencies:
