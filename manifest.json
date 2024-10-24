@@ -12,6 +12,8 @@
   "action": {
     "default_popup": "index.html"
   },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": ["http://*/*", "https://*/*"],
   "background": {
     "service_worker": "service-worker.js",
     "type": "module"
