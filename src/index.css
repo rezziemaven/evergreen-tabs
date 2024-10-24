@@ -2,12 +2,30 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --text: #47403e;
+  --background: #fbfbfe;
+  --primary: #7fbc15;
+  --secondary: #edfbd0;
+  --accent: #ffd23d;
+  color: var(--text);
+  background-color: var(--background);
+  color: var(--text);
+  background-color: var(--background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+  li {
+    background-color: var(--primary);
+  }
+
+  .error {
+    background-color: lightgoldenrodyellow;
+    color: darkgoldenrod;
+    border-color: lightgoldenrodyellow;
+  }
 body {
   width: 20rem;
   /* margin: 0; */
@@ -28,8 +46,19 @@ ul {
   flex: 1;
   width: 100%;
 }
+
+.evergreen-tabs {
+  padding: 2rem 0;
+}
+
+.evergreen-tabs h2 {
+  margin-top: 0;
+}
+
 li {
   display: flex;
+
+  color: var(--text);
   padding: 0.5rem;
   flex: 1;
   justify-content: space-between;
@@ -38,6 +67,9 @@ li {
   margin-bottom: 0.5rem;
 }
 li button {
+  background-color: var(--text);
+  color: var(--background);
+  border-color: transparent;
   width: 1rem;
   height: 1rem;
   padding: 0.8rem;
@@ -56,6 +88,8 @@ button {
   display: inline-block;
   margin: 0;
   text-decoration: none;
+  background: var(--text);
+  color: var(--background);
   font-family: sans-serif;
   font-size: 1rem;
   line-height: 1;
@@ -65,6 +99,18 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+
+button.add-item {
+  background-color: var(--primary);
+  color: var(--text);
+  border: transparent;
+}
+
+button.move-item {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+
 form div {
   display: flex;
   justify-content: space-between;
@@ -73,4 +119,38 @@ form div {
 input {
   margin-right: 0.1rem;
   padding: 0.4rem;
+}
+
+.error {
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  border: 1px solid;
+}
+
+#footer {
+  margin-top: 2rem;
+}
+
+#footer p {
+  font-size: small;
+}
+
+#footer a {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+hr {
+  margin: 2rem 0 1rem 0;
+  border: none;
+  /* border-bottom: 1px dashed var(--text); */
+  height: 1px;
+  background: var(--text);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--text),
+    var(--text) 4px,
+    transparent 4px,
+    transparent 8px
+  );
 }
