@@ -1,0 +1,15 @@
+{
+  "hash": "4711277b",
+  "configHash": "a6e47340",
+  "lockfileHash": "c257c15d",
+  "browserHash": "414eca39",
+  "optimized": {
+    "preact": {
+      "src": "../../node_modules/.pnpm/preact@10.24.3/node_modules/preact/dist/preact.module.js",
+      "file": "preact.js",
+      "fileHash": "29692550",
+      "needsInterop": false
+    }
+  },
+  "chunks": {}
+}
