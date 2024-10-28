@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'preact/hooks';
 import { LinkListItem } from './components/LinkListItem';
+import { LinkList } from './components/LinkList';
 import './app.css';
 
 export function App() {
   const [links, setLinks] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [linkExists, setLinkExists] = useState(false);
+
+  // console.log('mylinks: ', links);
+
+  // get value of input when submit button is clicked
   const inputHandler = (e) => {
     setInputValue(e.currentTarget.value);
-    // console.log(e.currentTarget.value);
   };
 
   const submitForm = async (e) => {
@@ -29,7 +33,7 @@ export function App() {
             url: inputValue,
           },
         ]);
-        // setInputValue('');
+        setInputValue('');
       }
     }
   };
@@ -55,7 +59,6 @@ export function App() {
   // Clear list
   const clearList = async () => {
     await chrome.storage.sync.remove(['evergreenTabLinks']);
-    await chrome.storage.local.remove(['evergreenTabLinks']);
     setLinks([]);
   };
 
@@ -71,7 +74,7 @@ export function App() {
   // Update local storage when change is made to links state
   useEffect(() => {
     chrome.storage.sync.set({ evergreenTabLinks: [...links] }, (result) => {
-      // console.log(result);
+      console.log(result);
     });
   }, [links]);
 
@@ -107,27 +110,18 @@ export function App() {
         </div>
       </form>
       <hr />
+
       <section className="evergreen-tabs">
         <h2>My evergreen tabs</h2>
         {!links.length ? (
           <p>No tabs saved yet. Add one above!</p>
         ) : (
-          <>
-            <div className="list">
-              {links.map((link) => (
-                <LinkListItem
-                  key={link.id}
-                  id={link.id}
-                  url={link.url}
-                  onRemove={removeLink}
-                />
-              ))}
-            </div>
-
-            <button className="clear-list" onClick={clearList}>
-              Clear list
-            </button>
-          </>
+          <LinkList
+            onDragLink={updateLinksOrder}
+            links={links}
+            onClear={clearList}
+            onRemoveLink={removeLink}
+          />
         )}
       </section>
       <section id="footer">
