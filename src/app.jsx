@@ -73,9 +73,7 @@ export function App() {
 
   // Update local storage when change is made to links state
   useEffect(() => {
-    chrome.storage.sync.set({ evergreenTabLinks: [...links] }, (result) => {
-      console.log(result);
-    });
+    chrome.storage.sync.set({ evergreenTabLinks: [...links] }, (result) => {});
   }, [links]);
 
   return (
