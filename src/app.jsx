@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'preact/hooks';
-import { LinkListItem } from './components/LinkListItem';
 import { LinkList } from './components/LinkList';
 import './app.css';
 
