@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "preact": "^10.24.3",
-    "react-drag-reorder": "^1.2.0",
     "react-easy-sort": "^1.6.0"
   },
   "devDependencies": {

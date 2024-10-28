@@ -11,9 +11,6 @@ importers:
       preact:
         specifier: ^10.24.3
         version: 10.24.3
-      react-drag-reorder:
-        specifier: ^1.2.0
-        version: 1.2.0
       react-easy-sort:
         specifier: ^1.6.0
         version: 1.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -653,9 +650,6 @@ packages:
     resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
     peerDependencies:
       react: ^18.3.1
-
-  react-drag-reorder@1.2.0:
-    resolution: {integrity: sha512-UXpXvRYorBoJOIaniqDXtU/eKWx1YNk6D2efUk+awXAd2xNJS6DSdwEOrwUZU44XsjKYO54/QC1RmiaL2OqiEg==}
 
   react-easy-sort@1.6.0:
     resolution: {integrity: sha512-zd9Nn90wVlZPEwJrpqElN87sf9GZnFR1StfjgNQVbSpR5QTSzCHjEYK6REuwq49Ip+76KOMSln9tg/ST2KLelg==}
@@ -1350,8 +1344,6 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.23.2
-
-  react-drag-reorder@1.2.0: {}
 
   react-easy-sort@1.6.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
