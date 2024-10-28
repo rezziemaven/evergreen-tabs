@@ -35,8 +35,16 @@ export function App() {
   };
 
   // TODO: move items in list
-  const updateLinksOrder = (currentPosition, newPosition) => {
-    console.log(currentPosition, newPosition);
+  const updateLinksOrder = (oldIndex, newIndex) => {
+    console.log(oldIndex, newIndex);
+    setLinks((currentLinks) => {
+      const newLinks = [...currentLinks];
+      [newLinks[oldIndex], newLinks[newIndex]] = [
+        newLinks[newIndex],
+        newLinks[oldIndex],
+      ];
+      return newLinks;
+    });
   };
 
   // Remove item from list
