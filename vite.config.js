@@ -16,6 +16,10 @@ export default defineConfig({
           src: 'service-worker.js',
           dest: '',
         },
+        {
+          src: 'helpers.js',
+          dest: '',
+        },
       ],
     }),
   ],
