@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'preact/hooks';
 import { LinkList } from './components/LinkList';
+import { CleanedURL } from '../helpers';
 import './app.css';
 
 export function App() {
   const [links, setLinks] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [linkExists, setLinkExists] = useState(false);
+  const [linkExistsErrorVisible, setLinkExistsErrorVisible] = useState(false);
 
   // console.log('mylinks: ', links);
 
@@ -18,13 +19,15 @@ export function App() {
     if (e.currentTarget.checkValidity()) {
       e.preventDefault();
       // double check url isn't already in array
-      const urlMinusScheme = inputValue.split('//')[1];
-      const duplicate = links.filter((link) =>
-        link.url.includes(urlMinusScheme)
-      );
-      if (duplicate.length) setLinkExists(true);
+      const duplicateExists = links.some((link) => {
+        const cleanedLink = new CleanedURL(link.url).cleaned();
+        const cleanedInput = new CleanedURL(inputValue).cleaned();
+
+        return cleanedLink === cleanedInput;
+      });
+      if (duplicateExists) setLinkExistsErrorVisible(true);
       else {
-        if (linkExists) setLinkExists(false);
+        if (linkExistsErrorVisible) setLinkExistsErrorVisible(false);
         setLinks((currentLinks) => [
           ...currentLinks,
           {
@@ -39,7 +42,7 @@ export function App() {
 
   // TODO: move items in list
   const updateLinksOrder = (oldIndex, newIndex) => {
-    console.log(oldIndex, newIndex);
+    // console.log(oldIndex, newIndex);
     setLinks((currentLinks) => {
       const newLinks = [...currentLinks];
       [newLinks[oldIndex], newLinks[newIndex]] = [
@@ -80,7 +83,7 @@ export function App() {
       <section id="header">
         <h1>Evergreen Tabs</h1>
       </section>
-      {linkExists && (
+      {linkExistsErrorVisible && (
         <div className="error">
           Link already exists. Please enter a different link.
         </div>
