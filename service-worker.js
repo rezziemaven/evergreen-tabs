@@ -1,23 +1,38 @@
+import { CleanedURL } from './helpers.js';
+
 // add pinned tabs when window is opened
 chrome.windows.onCreated.addListener(async (window) => {
-  const tabs = await chrome.tabs.query({ windowId: window.id });
-  // console.log('my tabs: ', tabs);
+  // get list of pinned tabs
+  const pinnedTabs = await chrome.tabs.query({
+    windowId: window.id,
+    pinned: true,
+  });
+
+  // console.log('my tabs: ', pinnedTabs);
   const storage = await chrome.storage.sync.get(['evergreenTabLinks']);
+
   if (storage.evergreenTabLinks.length && !window.incognito) {
+    // filter pinned tabs to get tabs that are already saved
+    const cleanedLinks = storage.evergreenTabLinks.map((link) =>
+      new CleanedURL(link.url).cleaned()
+    );
+    const alreadyPinnedTabIds = pinnedTabs
+      .filter((tab) => {
+        const cleanedTabUrl = new CleanedURL(tab.url).cleaned();
+        return cleanedLinks.includes(cleanedTabUrl);
+      })
+      .map((tab) => tab.id);
+
+    // delete previously pinned saved tabs
+    await chrome.tabs.remove(alreadyPinnedTabIds);
+
+    // create new tabs using new order of list
     storage.evergreenTabLinks.forEach(
       (link) => {
-        const tabExists = tabs.some((tab) => {
-          // strip out http or https:// from link
-          const urlMinusScheme = link.url.split('//')[1];
-          // console.log({ tabURL: tab.url, linkURL: urlMinusScheme });
-          return tab.url.includes(urlMinusScheme);
+        chrome.tabs.create({
+          url: link.url,
+          pinned: true,
         });
-        // console.log('exists? ', tabExists);
-        if (!tabExists)
-          chrome.tabs.create({
-            url: link.url,
-            pinned: true,
-          });
       },
       ['normal']
     );
